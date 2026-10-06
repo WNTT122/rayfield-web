@@ -12,3 +12,26 @@
 @media (max-width:900px) { .sidebar { width:76px; padding:20px 10px; }.sidebar .rf-logo { padding:0 13px 36px; }.sidebar .rf-logo > span:last-child,.sidebar nav button:not(.active)::after,.sidebar nav button,.sidebar-bottom button:not(.profile-switch) { font-size:0; justify-content:center; }.sidebar nav button .rf-icon,.sidebar-bottom button .rf-icon { font-size:18px; }.profile-switch > span:nth-child(2),.profile-switch > span:last-child { display:none; }.content { margin-left:76px; width:calc(100% - 76px); }.hero-content { padding-left:6vw; }.hero-content h1 { font-size:52px; }.admin-grid { grid-template-columns:1fr; }.stats-grid { grid-template-columns:repeat(2,1fr); } }
 @media (max-width:600px) { .sidebar { display:none; }.content { margin-left:0; width:100%; padding-top:62px; }.mobile-header { display:flex; height:62px; position:fixed; z-index:4; top:0; left:0; right:0; background:rgba(10,12,18,.88); backdrop-filter:blur(14px); align-items:center; padding:0 20px; gap:15px; border-bottom:1px solid var(--rf-line); }.mobile-header .rf-logo { margin-right:auto; }.mobile-header button { border:0; background:transparent; color:var(--rf-text); }.hero { height:560px; min-height:0; }.hero-overlay { background:linear-gradient(0deg,var(--rf-bg) 5%,rgba(10,12,18,.3) 72%),linear-gradient(90deg,rgba(10,12,18,.5),transparent); }.hero-content { padding:0 22px 55px; }.hero-content h1 { font-size:42px; }.home-content,.page-content { padding-left:20px; padding-right:20px; }.media-card { flex-basis:140px; }.media-card.landscape { flex-basis:220px; }.page-title-row,.admin-title { align-items:flex-start; gap:16px; flex-direction:column; }.page-content { padding-top:30px; }.poster-grid { grid-template-columns:repeat(2,1fr); gap:22px 12px; }.stats-grid { gap:10px; }.stat-card { padding:15px; }.stat-card strong { font-size:22px; }.stream-row { grid-template-columns:32px 1fr; }.stream-row > span:nth-last-child(-n+2) { display:none; }.settings-layout { display:flex; flex-direction:column; gap:20px; }.settings-nav { display:grid; grid-template-columns:1fr 1fr; }.settings-panel { padding:22px; }.choice { min-width:0; flex:1; padding:9px 7px; }.login-card { padding:28px 22px; }.profile-content h1 { font-size:38px; }.profile-grid { gap:4px; margin-top:30px; }.profile-card { width:110px; }.profile-stage { padding:24px 16px; }.player-page { padding:24px 20px; }.player-screen { margin-top:60px; }.player-placeholder { aspect-ratio:16/10; }.controls-row { gap:12px; padding-left:0; padding-right:0; }.player-controls { padding:14px; } }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none!important; animation:none!important; scroll-behavior:auto!important; } }
+
+/* Rayfield responsive polish */
+.empty-page { min-height:70vh; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; }
+.empty-state { width:min(520px,100%); margin-top:28px; padding:36px; border:1px solid var(--rf-line); border-radius:24px; background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02)); }
+.empty-state > span { display:grid; place-items:center; width:48px; height:48px; border-radius:16px; background:rgba(136,168,255,.14); color:var(--rf-accent); font-size:22px; margin-bottom:20px; }
+.empty-state h2 { margin-bottom:10px; }
+.empty-state p { color:var(--rf-muted); line-height:1.6; }
+.search-page { max-width:900px; }
+.search-box { display:flex; align-items:center; gap:12px; margin:28px 0 34px; padding:14px 18px; border:1px solid var(--rf-line); border-radius:14px; background:var(--rf-surface); }
+.search-box input { flex:1; border:0; outline:0; background:transparent; color:var(--rf-text); font-size:16px; }
+.search-box input::placeholder { color:#687189; }
+.settings-panel { background:var(--rf-surface); border:1px solid var(--rf-line); border-radius:20px; padding:30px; }
+.settings-nav button { border:0; background:transparent; color:var(--rf-muted); padding:11px 13px; border-radius:9px; text-align:left; display:flex; justify-content:space-between; }
+.settings-nav button.active,.settings-nav button:hover { color:var(--rf-text); background:var(--rf-surface-2); }
+.setting-block { padding:24px 0; border-top:1px solid var(--rf-line); margin-top:20px; }
+.setting-block > label,.toggle-setting label { display:block; font-size:13px; font-weight:600; margin-bottom:12px; }
+.accent-swatch { width:26px; height:26px; border:2px solid transparent; border-radius:50%; }
+.accent-swatch:hover,.accent-swatch:focus-visible { border-color:var(--rf-text); transform:scale(1.08); }
+.toggle { width:44px; height:25px; padding:3px; border:0; border-radius:99px; background:var(--rf-surface-2); }
+.toggle span { display:block; width:19px; height:19px; border-radius:50%; background:var(--rf-muted); transition:.2s; }
+.toggle:focus-visible span,.toggle:hover span { background:var(--rf-accent); }
+@media (max-width:600px) { .empty-state { padding:25px; } .settings-panel { padding:22px; } .hero-meta { gap:10px; flex-wrap:wrap; } .hero-actions { flex-wrap:wrap; } .profile-top .subtle-button { padding:9px 11px; font-size:12px; } }
+@media (min-width:1200px) { .home-content,.page-content { padding-left:8vw; padding-right:8vw; } }
