@@ -29,7 +29,7 @@
 .setting-block { padding:24px 0; border-top:1px solid var(--rf-line); margin-top:20px; }
 .setting-block > label,.toggle-setting label { display:block; font-size:13px; font-weight:600; margin-bottom:12px; }
 .accent-swatch { width:26px; height:26px; border:2px solid transparent; border-radius:50%; }
-.accent-swatch:hover,.accent-swatch:focus-visible { border-color:var(--rf-text); transform:scale(1.08); }
+.accent-swatch:hover,.accent-swatch:focus-visible,.accent-swatch.selected { border-color:var(--rf-text); transform:scale(1.08); box-shadow:0 0 0 3px var(--rf-surface),0 0 0 5px var(--rf-accent); }
 .toggle { width:44px; height:25px; padding:3px; border:0; border-radius:99px; background:var(--rf-surface-2); }
 .toggle span { display:block; width:19px; height:19px; border-radius:50%; background:var(--rf-muted); transition:.2s; }
 .toggle:focus-visible span,.toggle:hover span { background:var(--rf-accent); }
