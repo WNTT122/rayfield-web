@@ -1,5 +1,9 @@
-<div id="loginPage" data-role="page" class="page standalonePage backdropPage" data-backbutton="false" data-backdroptype="splashscreen">
-    <div class="padded-left padded-right padded-bottom-page margin-auto-y">
+<div id="loginPage" data-role="page" class="page standalonePage backdropPage rayfieldAuthPage" data-backbutton="false" data-backdroptype="splashscreen">
+    <div class="rayfieldAuthPanel padded-left padded-right padded-bottom-page margin-auto-y">
+        <div class="rayfieldAuthBrand" aria-label="Rayfield">
+            <span class="rayfieldAuthMark" aria-hidden="true">R</span>
+            <span class="rayfieldAuthWordmark">Rayfield</span>
+        </div>
         <form class="manualLoginForm margin-auto-x hide">
             <div class="padded-left padded-right flex align-items-center justify-content-center">
                 <h1 class="sectionTitle">${HeaderPleaseSignIn}</h1>
@@ -28,9 +32,10 @@
             </div>
         </form>
 
-        <div class="visualLoginForm" style="text-align: center;">
-            <h1 style="margin-top:1em;">${HeaderPleaseSignIn}</h1>
-            <div id="divUsers" class="itemsContainer vertical-wrap centered"></div>
+        <div class="visualLoginForm rayfieldProfileSelection" style="text-align: center;">
+            <p class="rayfieldEyebrow">${HeaderPleaseSignIn}</p>
+            <h1 class="rayfieldAuthTitle">Who's watching?</h1>
+            <div id="divUsers" class="itemsContainer vertical-wrap centered" role="list" aria-label="Available profiles"></div>
         </div>
 
         <div class="readOnlyContent" style="margin: .5em auto 1em;">
