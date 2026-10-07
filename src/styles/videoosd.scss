@@ -5,6 +5,25 @@
     margin-right: env(safe-area-inset-right);
     padding-left: 1em;
     padding-right: 1em;
+    color: var(--rayfield-text-primary, #f7f8fb);
+}
+
+.videoOsd-appBar .headerTop {
+    min-height: 4.25rem;
+}
+
+.videoOsd-appBar .headerButton {
+    border-radius: 0.85rem;
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.videoOsd-appBar .headerButton:hover,
+.videoOsd-appBar .headerButton:focus-visible {
+    background: var(--rayfield-surface-hover, rgba(255, 255, 255, 0.1));
+}
+
+.videoOsd-appBar .headerButton:active {
+    transform: scale(0.96);
 }
 
 .chapterThumbTextContainer,
@@ -17,7 +36,7 @@
     left: 0;
     right: 0;
     position: fixed;
-    background: linear-gradient(0deg, rgba(16, 16, 16, 0.75) 0%, rgba(16, 16, 16, 0) 100%);
+    background: linear-gradient(0deg, rgba(7, 10, 16, 0.96) 0%, rgba(7, 10, 16, 0.78) 38%, rgba(7, 10, 16, 0) 100%);
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
     padding-top: 7.5em;
@@ -123,6 +142,29 @@
     pointer-events: all;
     flex-grow: 1;
     padding: 0 0.8em;
+    max-width: 96rem;
+}
+
+.videoOsdBottom .paper-icon-button-light,
+.videoOsdBottom .emby-button,
+.videoOsdBottom button {
+    border-radius: 0.8rem;
+    transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.videoOsdBottom .paper-icon-button-light:hover,
+.videoOsdBottom .paper-icon-button-light:focus-visible,
+.videoOsdBottom .emby-button:hover,
+.videoOsdBottom .emby-button:focus-visible,
+.videoOsdBottom button:hover,
+.videoOsdBottom button:focus-visible {
+    background: var(--rayfield-surface-hover, rgba(255, 255, 255, 0.1));
+}
+
+.videoOsdBottom .paper-icon-button-light:active,
+.videoOsdBottom .emby-button:active,
+.videoOsdBottom button:active {
+    transform: scale(0.95);
 }
 
 .videoOsdBottom .buttons {
