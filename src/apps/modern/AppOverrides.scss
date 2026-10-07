@@ -69,6 +69,130 @@ body {
     }
 }
 
+// Rayfield home presentation sits on top of Jellyfin's existing homeSections
+// controllers, queries, and playback actions. These rules intentionally style
+// the existing DOM rather than replacing its data or behavior.
+.homePage {
+    background:
+        radial-gradient(circle at 74% 0%, color-mix(in srgb, var(--rayfield-accent) 12%, transparent), transparent 32rem),
+        var(--jf-palette-background-default);
+
+    .homeSectionsContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 2.25rem;
+        padding: 1.5rem clamp(1rem, 3vw, 3rem) 4rem;
+    }
+
+    .verticalSection {
+        min-width: 0;
+        padding: 0;
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    .sectionTitle {
+        display: flex;
+        align-items: center;
+        min-height: 2.5rem;
+        margin: 0 0 0.75rem;
+        color: var(--jf-palette-text-primary);
+        font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+    }
+
+    .sectionTitleTextButton,
+    .sectionTitleButton {
+        color: inherit;
+        transition: color 160ms ease;
+
+        &:hover,
+        &:focus-visible {
+            color: var(--rayfield-accent);
+        }
+    }
+
+    .emby-scroller {
+        margin: 0 -0.5rem;
+        padding: 0.25rem 0.5rem 0.5rem;
+    }
+
+    .itemsContainer {
+        gap: 0.2rem;
+    }
+
+    .cardBox {
+        border-radius: var(--rayfield-radius-md);
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+
+        &:hover,
+        &:focus-visible {
+            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+            transform: translateY(-4px);
+        }
+    }
+
+    .cardImageContainer,
+    .cardPadder {
+        border-radius: var(--rayfield-radius-md);
+    }
+
+    .cardText,
+    .cardText-first {
+        color: var(--jf-palette-text-primary);
+        font-weight: 600;
+    }
+
+    .cardText-secondary {
+        color: var(--jf-palette-text-secondary);
+    }
+
+    .playedIndicator,
+    .progressring,
+    .itemProgressBar {
+        background-color: var(--rayfield-accent);
+    }
+
+    .homeLibraryButton {
+        min-height: 3rem;
+        border: 1px solid var(--rayfield-border);
+        border-radius: var(--rayfield-radius-md);
+        background: color-mix(in srgb, var(--jf-palette-background-paper) 88%, transparent);
+        box-shadow: none;
+        transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+
+        &:hover,
+        &:focus-visible {
+            border-color: color-mix(in srgb, var(--rayfield-accent) 60%, transparent);
+            background: color-mix(in srgb, var(--rayfield-accent) 12%, var(--jf-palette-background-paper));
+            transform: translateY(-2px);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .homeSectionsContainer {
+            gap: 1.5rem;
+            padding: 1rem 0.75rem 3rem;
+        }
+
+        .emby-scroller {
+            margin-inline: -0.75rem;
+            padding-inline: 0.75rem;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .homePage .cardBox,
+    .homePage .homeLibraryButton {
+        transition: none;
+    }
+}
+
 // Default MUI breakpoints
 // https://mui.com/material-ui/customization/breakpoints/#default-breakpoints
 $mui-bp-sm: 600px;
