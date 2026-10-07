@@ -8,14 +8,14 @@ export const DEFAULT_COLOR_SCHEME: ColorSystemOptions = {
     palette: {
         mode: 'dark',
         primary: {
-            main: '#00a4dc'
+            main: '#7c8cff'
         },
         secondary: {
-            main: '#00a4dc'
+            main: '#a78bfa'
         },
         background: {
-            default: '#101010',
-            paper: '#202020'
+            default: '#0b0d12',
+            paper: '#151923'
         },
         action: {
             selectedOpacity: 0.2

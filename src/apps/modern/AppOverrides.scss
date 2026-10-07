@@ -1,3 +1,74 @@
+// Rayfield visual layer: shared shell tokens and component treatment.
+:root {
+    --rayfield-radius-sm: 10px;
+    --rayfield-radius-md: 14px;
+    --rayfield-radius-lg: 20px;
+    --rayfield-shadow-soft: 0 12px 36px rgba(0, 0, 0, 0.18);
+    --rayfield-border: rgba(255, 255, 255, 0.09);
+    --rayfield-accent: #7c8cff;
+}
+
+[data-mui-color-scheme='light'] {
+    --rayfield-border: rgba(24, 31, 48, 0.12);
+    --rayfield-accent: #5667e8;
+}
+
+body {
+    background: var(--jf-palette-background-default);
+}
+
+.MuiAppBar-root {
+    background: color-mix(in srgb, var(--jf-palette-background-paper) 88%, transparent) !important;
+    border-bottom: 1px solid var(--rayfield-border);
+    box-shadow: none !important;
+    backdrop-filter: blur(18px);
+}
+
+.MuiDrawer-paper {
+    background: var(--jf-palette-background-default) !important;
+    border-right: 1px solid var(--rayfield-border) !important;
+    box-shadow: var(--rayfield-shadow-soft);
+}
+
+.MuiListItemButton-root {
+    margin: 3px 10px;
+    border-radius: var(--rayfield-radius-sm);
+    transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+
+    &:hover {
+        background-color: color-mix(in srgb, var(--rayfield-accent) 10%, transparent);
+        transform: translateX(2px);
+    }
+
+    &.Mui-selected {
+        color: var(--rayfield-accent);
+        background-color: color-mix(in srgb, var(--rayfield-accent) 16%, transparent);
+
+        .MuiListItemIcon-root {
+            color: inherit;
+        }
+    }
+}
+
+.MuiButton-root,
+.MuiIconButton-root,
+.MuiChip-root,
+.MuiTextField-root .MuiFilledInput-root {
+    border-radius: var(--rayfield-radius-sm);
+}
+
+.MuiButton-containedPrimary {
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--rayfield-accent) 26%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
 // Default MUI breakpoints
 // https://mui.com/material-ui/customization/breakpoints/#default-breakpoints
 $mui-bp-sm: 600px;
