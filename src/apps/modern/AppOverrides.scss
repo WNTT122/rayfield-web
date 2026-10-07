@@ -193,6 +193,136 @@ body {
     }
 }
 
+// Library browsing stays backed by LibraryProvider/useGetItemsViewByType and the
+// existing Cards, Lists, filters, sort, pagination, and item-action components.
+.libraryPage {
+    background:
+        radial-gradient(circle at 8% 0%, color-mix(in srgb, var(--rayfield-accent) 8%, transparent), transparent 28rem),
+        var(--jf-palette-background-default);
+
+    .pageTabContent,
+    .libraryTabContent {
+        min-width: 0;
+    }
+
+    .MuiToolbar-root {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        min-height: 4rem;
+        padding: 0.75rem clamp(1rem, 3vw, 3rem);
+        border-bottom: 1px solid var(--rayfield-border);
+        background: color-mix(in srgb, var(--jf-palette-background-default) 88%, transparent);
+        backdrop-filter: blur(18px);
+        gap: 0.5rem;
+    }
+
+    .MuiToolbar-root .MuiChip-root {
+        border: 1px solid var(--rayfield-border);
+        background: color-mix(in srgb, var(--jf-palette-background-paper) 78%, transparent);
+        color: var(--jf-palette-text-secondary);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .MuiToolbar-root .MuiButton-root,
+    .MuiToolbar-root .MuiIconButton-root {
+        min-height: 2.5rem;
+        border-radius: var(--rayfield-radius-sm);
+    }
+
+    .padded-bottom-page {
+        padding-bottom: 4rem;
+    }
+
+    .vertical-wrap {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(clamp(9.5rem, 13vw, 13rem), 1fr));
+        gap: clamp(1rem, 1.8vw, 1.5rem);
+        padding: 1.5rem clamp(1rem, 3vw, 3rem) 3rem;
+    }
+
+    .vertical-wrap > .card,
+    .vertical-wrap > .cardBox {
+        min-width: 0;
+        margin: 0;
+    }
+
+    .vertical-wrap .cardBox {
+        border-radius: var(--rayfield-radius-md);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+        transition: transform 180ms ease, box-shadow 180ms ease, outline-color 180ms ease;
+    }
+
+    .vertical-wrap .cardBox:hover,
+    .vertical-wrap .card:focus-within .cardBox {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.3);
+    }
+
+    .vertical-wrap .cardImageContainer,
+    .vertical-wrap .cardPadder,
+    .vertical-wrap .cardImage {
+        border-radius: var(--rayfield-radius-md);
+    }
+
+    .vertical-wrap .cardText,
+    .vertical-wrap .cardText-first {
+        margin-top: 0.55rem;
+        color: var(--jf-palette-text-primary);
+        font-weight: 650;
+    }
+
+    .vertical-wrap .cardText-secondary {
+        color: var(--jf-palette-text-secondary);
+    }
+
+    .vertical-wrap .itemProgressBar,
+    .vertical-wrap .playedIndicator,
+    .vertical-wrap .progressring {
+        background-color: var(--rayfield-accent);
+    }
+
+    .vertical-list {
+        padding: 1rem clamp(1rem, 3vw, 3rem) 3rem;
+    }
+
+    .vertical-list .listItem {
+        border: 1px solid var(--rayfield-border);
+        border-radius: var(--rayfield-radius-md);
+        background: color-mix(in srgb, var(--jf-palette-background-paper) 72%, transparent);
+        margin-bottom: 0.6rem;
+    }
+
+    @media (max-width: 600px) {
+        .MuiToolbar-root {
+            position: static;
+            padding: 0.65rem 0.75rem;
+        }
+
+        .vertical-wrap {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.8rem 0.6rem;
+            padding: 1rem 0.75rem 2.5rem;
+        }
+
+        .vertical-list {
+            padding: 0.75rem 0.75rem 2.5rem;
+        }
+    }
+
+    @media (min-width: 601px) and (max-width: 900px) {
+        .vertical-wrap {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .libraryPage .vertical-wrap .cardBox {
+        transition: none;
+    }
+}
+
 // Default MUI breakpoints
 // https://mui.com/material-ui/customization/breakpoints/#default-breakpoints
 $mui-bp-sm: 600px;
