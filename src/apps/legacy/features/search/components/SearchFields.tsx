@@ -42,6 +42,9 @@ const SearchFields: FC<SearchFieldsProps> = ({
                     className='inputContainer flex-grow'
                     style={{ marginBottom: 0 }}
                 >
+                    <label className='sr-only' htmlFor='searchTextInput'>
+                        {globalize.translate('Search')}
+                    </label>
                     <Input
                         ref={inputRef}
                         id='searchTextInput'
@@ -56,6 +59,16 @@ const SearchFields: FC<SearchFieldsProps> = ({
                         onChange={onChange}
                     />
                 </div>
+                {query && (
+                    <button
+                        type='button'
+                        className='searchfields-clear material-icons button-flat button-flat-mini'
+                        aria-label={globalize.translate('Clear')}
+                        onClick={() => onSearch('')}
+                    >
+                        close
+                    </button>
+                )}
             </div>
             {layoutManager.tv && !browser.tv
                 && <AlphaPicker onAlphaPicked={onAlphaPicked} />

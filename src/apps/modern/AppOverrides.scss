@@ -195,6 +195,137 @@ body {
     }
 }
 
+// Search keeps the legacy Jellyfin query hooks and card builder, while giving
+// the real results a focused Rayfield presentation.
+#searchPage {
+    background:
+        radial-gradient(circle at 82% 0%, color-mix(in srgb, var(--rayfield-accent) 10%, transparent), transparent 30rem),
+        var(--jf-palette-background-default);
+
+    .searchFields {
+        padding: clamp(1rem, 4vw, 3rem) clamp(1rem, 3vw, 3rem) 1.25rem;
+    }
+
+    .searchFieldsInner {
+        max-width: 56rem;
+        min-height: 3.75rem;
+        padding: 0.4rem 0.75rem 0.4rem 1rem;
+        border: 1px solid var(--rayfield-border);
+        border-radius: var(--rayfield-radius-lg);
+        background: color-mix(in srgb, var(--jf-palette-background-paper) 92%, transparent);
+        box-shadow: 0 18px 44px rgba(0, 0, 0, 0.16);
+        transition: border-color 160ms ease, box-shadow 160ms ease;
+
+        &:focus-within {
+            border-color: color-mix(in srgb, var(--rayfield-accent) 68%, transparent);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--rayfield-accent) 18%, transparent), 0 18px 44px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    .searchfields-icon {
+        flex: 0 0 auto;
+        margin: 0 0.65rem 0 0;
+        color: var(--jf-palette-text-secondary);
+        font-size: 1.4rem;
+    }
+
+    .searchfields-txtSearch {
+        min-height: 2.75rem;
+        border: 0;
+        background: transparent;
+        color: var(--jf-palette-text-primary);
+        font-size: clamp(1rem, 1.5vw, 1.15rem);
+        box-shadow: none;
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .searchfields-clear {
+        flex: 0 0 auto;
+        color: var(--jf-palette-text-secondary);
+        border-radius: 999px;
+
+        &:hover,
+        &:focus-visible {
+            color: var(--rayfield-accent);
+            background: color-mix(in srgb, var(--rayfield-accent) 12%, transparent);
+        }
+    }
+
+    .searchResults {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0 clamp(1rem, 3vw, 3rem) 4rem;
+    }
+
+    .searchResults .verticalSection {
+        min-width: 0;
+        padding: 0;
+    }
+
+    .searchResults .sectionTitle {
+        margin: 0 0 0.75rem;
+        color: var(--jf-palette-text-primary);
+        font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+        font-weight: 700;
+    }
+
+    .searchResults .emby-scroller {
+        margin-inline: -0.5rem;
+        padding: 0.25rem 0.5rem 0.5rem;
+    }
+
+    .searchResults .cardBox {
+        border-radius: var(--rayfield-radius-md);
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+
+        &:hover,
+        &:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+        }
+    }
+
+    .noItemsMessage {
+        max-width: 34rem;
+        margin: 2rem auto;
+        padding: 2rem;
+        border: 1px solid var(--rayfield-border);
+        border-radius: var(--rayfield-radius-lg);
+        background: color-mix(in srgb, var(--jf-palette-background-paper) 86%, transparent);
+        color: var(--jf-palette-text-secondary);
+        text-align: center;
+    }
+
+    @media (max-width: 600px) {
+        .searchFields {
+            padding-inline: 0.75rem;
+        }
+
+        .searchFieldsInner {
+            min-height: 3.5rem;
+            padding-left: 0.85rem;
+        }
+
+        .searchResults {
+            gap: 1.25rem;
+            padding-inline: 0.75rem;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #searchPage .searchFieldsInner,
+    #searchPage .searchResults .cardBox {
+        transition: none;
+    }
+}
+
 // Library browsing stays backed by LibraryProvider/useGetItemsViewByType and the
 // existing Cards, Lists, filters, sort, pagination, and item-action components.
 .libraryPage {
