@@ -328,6 +328,7 @@ body {
 
 // Library browsing stays backed by LibraryProvider/useGetItemsViewByType and the
 // existing Cards, Lists, filters, sort, pagination, and item-action components.
+/* stylelint-disable no-descending-specificity */
 .libraryPage {
     background:
         radial-gradient(circle at 8% 0%, color-mix(in srgb, var(--rayfield-accent) 8%, transparent), transparent 28rem),
@@ -452,7 +453,6 @@ body {
 
 // Detail pages keep the legacy controller, media actions, and Jellyfin data flow,
 // while presenting the content as a focused Rayfield cinematic experience.
-/* stylelint-disable no-descending-specificity */
 .itemDetailPage {
     background: var(--jf-palette-background-default);
     color: var(--jf-palette-text-primary);
@@ -660,6 +660,133 @@ $mui-bp-xl: 1536px;
     .itemDetailPage
 ) {
     padding-top: 0 !important;
+}
+
+.userPreferencesPage {
+    background:
+        radial-gradient(circle at 78% 0%, color-mix(in srgb, var(--rayfield-accent) 10%, transparent), transparent 30rem),
+        var(--jf-palette-background-default);
+
+    .settingsContainer {
+        width: min(100%, 62rem);
+        margin-inline: auto;
+        padding: clamp(1rem, 3vw, 3rem) clamp(0.75rem, 3vw, 2.5rem) 4rem;
+    }
+
+    .settingsContainer > form > .MuiStack-root {
+        gap: 1.25rem;
+    }
+
+    .settingsContainer > form > .MuiStack-root > .MuiStack-root {
+        padding: clamp(1rem, 2.5vw, 1.75rem);
+        border: 1px solid var(--rayfield-border);
+        border-radius: var(--rayfield-radius-lg);
+        background: color-mix(in srgb, var(--jf-palette-background-paper) 88%, transparent);
+        box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+    }
+
+    .settingsContainer .MuiTypography-h2 {
+        margin: 0;
+        color: var(--jf-palette-text-primary);
+        font-size: clamp(1.15rem, 2vw, 1.45rem);
+        font-weight: 760;
+        letter-spacing: -0.025em;
+    }
+
+    .settingsContainer .MuiFormControl-root,
+    .settingsContainer .MuiFormControlLabel-root {
+        margin: 0;
+    }
+
+    .settingsContainer .MuiFormControlLabel-root {
+        min-height: 3.5rem;
+        padding: 0.35rem 0.5rem;
+        border-radius: var(--rayfield-radius-sm);
+        transition: background-color 160ms ease;
+
+        &:hover,
+        &:focus-within {
+            background: color-mix(in srgb, var(--rayfield-accent) 8%, transparent);
+        }
+    }
+
+    .settingsContainer .MuiFormControlLabel-label,
+    .settingsContainer .MuiInputLabel-root,
+    .settingsContainer .MuiFormHelperText-root {
+        color: var(--jf-palette-text-secondary);
+    }
+
+    .settingsContainer .MuiFormControlLabel-label {
+        color: var(--jf-palette-text-primary);
+        font-weight: 600;
+    }
+
+    .settingsContainer .MuiOutlinedInput-root,
+    .settingsContainer .MuiFilledInput-root,
+    .settingsContainer .MuiSelect-select {
+        min-height: 3.25rem;
+        border-radius: var(--rayfield-radius-sm);
+    }
+
+    .settingsContainer .MuiOutlinedInput-root,
+    .settingsContainer .MuiFilledInput-root {
+        background: color-mix(in srgb, var(--jf-palette-background-default) 42%, transparent);
+    }
+
+    .settingsContainer .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
+    .settingsContainer .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+        border-color: var(--rayfield-accent);
+    }
+
+    .settingsContainer .MuiCheckbox-root,
+    .settingsContainer .MuiSwitch-root,
+    .settingsContainer button,
+    .settingsContainer [role='button'] {
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+    }
+
+    .settingsContainer .MuiCheckbox-root.Mui-checked,
+    .settingsContainer .MuiSwitch-switchBase.Mui-checked {
+        color: var(--rayfield-accent);
+    }
+
+    .settingsContainer .MuiButton-root[type='submit'] {
+        align-self: flex-end;
+        min-height: 3.25rem;
+        min-width: 9rem;
+        border-radius: var(--rayfield-radius-sm);
+        background: var(--rayfield-accent);
+        color: var(--jf-palette-background-default);
+        font-weight: 750;
+    }
+
+    .settingsContainer :focus-visible {
+        outline: 3px solid color-mix(in srgb, var(--rayfield-accent) 62%, transparent);
+        outline-offset: 2px;
+    }
+
+    @media (max-width: 600px) {
+        .settingsContainer {
+            padding-inline: 0.75rem;
+        }
+
+        .settingsContainer > form > .MuiStack-root > .MuiStack-root {
+            padding: 1rem;
+            border-radius: var(--rayfield-radius-md);
+        }
+
+        .settingsContainer .MuiButton-root[type='submit'] {
+            align-self: stretch;
+            width: 100%;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .userPreferencesPage .MuiFormControlLabel-root {
+        transition: none;
+    }
 }
 
 .layout-mobile {
