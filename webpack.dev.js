@@ -18,6 +18,10 @@ module.exports = merge(common, {
         ]
     },
     devServer: {
+        // The sandbox proxy can only reach a server bound to all interfaces.
+        host: '0.0.0.0',
+        port: process.env.PORT || 3000,
+        allowedHosts: 'all',
         compress: true,
         client: {
             overlay: {
