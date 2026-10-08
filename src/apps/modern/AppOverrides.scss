@@ -32,7 +32,18 @@
 }
 
 body {
-    background: var(--jf-palette-background-default);
+    background: var(--rayfield-bg);
+    color: var(--rayfield-text);
+}
+
+#app {
+    min-height: 100dvh;
+    background: var(--rayfield-bg);
+}
+
+.page,
+.mainAnimatedPage {
+    min-height: 100%;
 }
 
 .backdropContainer {
@@ -202,6 +213,8 @@ body {
         display: flex;
         flex-direction: column;
         gap: 2.25rem;
+        width: min(100%, var(--rayfield-content-max));
+        margin-inline: auto;
         padding: 1.5rem clamp(1rem, 3vw, 3rem) 4rem;
     }
 
@@ -489,6 +502,8 @@ body {
 
     .vertical-wrap {
         display: grid;
+        width: min(100%, var(--rayfield-content-max));
+        margin-inline: auto;
         grid-template-columns: repeat(auto-fill, minmax(clamp(9.5rem, 13vw, 13rem), 1fr));
         gap: clamp(1rem, 1.8vw, 1.5rem);
         padding: 1.5rem clamp(1rem, 3vw, 3rem) 3rem;
@@ -603,6 +618,7 @@ body {
     .detailPageWrapperContainer {
         position: relative;
         z-index: 1;
+        width: min(100%, var(--rayfield-content-max));
         max-width: 112rem;
         margin: 0 auto;
     }
