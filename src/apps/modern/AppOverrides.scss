@@ -17,6 +17,24 @@ body {
     background: var(--jf-palette-background-default);
 }
 
+.backdropContainer {
+    background: var(--jf-palette-background-default);
+}
+
+.backdropContainer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(7, 10, 16, 0.18) 0%, rgba(7, 10, 16, 0.52) 62%, rgba(7, 10, 16, 0.94) 100%);
+}
+
+.backdropImage {
+    background-color: var(--jf-palette-background-paper);
+    background-position: center center;
+    background-size: cover;
+}
+
 .MuiAppBar-root {
     background: color-mix(in srgb, var(--jf-palette-background-paper) 88%, transparent) !important;
     border-bottom: 1px solid var(--rayfield-border);
@@ -458,9 +476,27 @@ body {
     color: var(--jf-palette-text-primary);
 
     .itemBackdrop {
-        opacity: 0.82;
+        position: relative;
+        height: clamp(15rem, 42vw, 32rem);
+        min-height: 15rem;
+        margin: 0;
+        background-color: var(--jf-palette-background-paper);
+        background-attachment: scroll;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 1;
         filter: saturate(0.9);
-        mask-image: linear-gradient(to bottom, black 0%, black 42%, transparent 94%);
+        mask-image: linear-gradient(to bottom, black 0%, black 62%, transparent 100%);
+        animation: none;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(7, 10, 16, 0.08) 0%, rgba(7, 10, 16, 0.12) 42%, rgba(7, 10, 16, 0.92) 100%);
+        }
     }
 
     .detailPageWrapperContainer {
@@ -594,6 +630,13 @@ body {
     }
 
     @media (max-width: 700px) {
+        .itemBackdrop {
+            height: clamp(12rem, 58vw, 20rem);
+            min-height: 12rem;
+            margin-top: 0;
+            background-position: center center;
+        }
+
         .detailPagePrimaryContainer {
             border-radius: var(--rayfield-radius-md);
         }
