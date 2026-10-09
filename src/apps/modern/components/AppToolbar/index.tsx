@@ -51,6 +51,9 @@ const AppToolbar: FC<AppToolbarProps> = ({
         >
             {!isDrawerAvailable && (
                 <Stack
+                    className='rayfieldActiveNav'
+                    component='nav'
+                    aria-label='Primary navigation'
                     direction='row'
                     spacing={0.5}
                 >

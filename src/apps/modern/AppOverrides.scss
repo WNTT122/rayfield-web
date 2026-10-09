@@ -75,18 +75,11 @@ body {
 }
 
 /* stylelint-disable no-descending-specificity */
-.rayfieldTopNav {
+.rayfieldActiveNav {
     display: flex;
     align-items: center;
     gap: 0.15rem;
-    min-width: 0;
     margin-left: 0.75rem;
-    overflow-x: auto;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
 
     .MuiButton-root {
         flex: 0 0 auto;
@@ -113,42 +106,17 @@ body {
         margin-left: 0;
     }
 
-    .rayfieldBrand {
-        margin-right: 0.6rem;
-        color: var(--rayfield-text);
-        font-size: 1.05rem;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-    }
-
-    .rayfieldBrandMark {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 1.8rem;
-        height: 1.8rem;
-        border-radius: 0.55rem;
-        background: var(--rayfield-accent);
-        color: var(--rayfield-bg);
-        font-size: 0.9rem;
-        font-weight: 900;
-    }
-
     .MuiSvgIcon-root {
         font-size: 1.1rem;
     }
 }
 
 @media (max-width: 700px) {
-    .rayfieldTopNav {
+    .rayfieldActiveNav {
         order: 4;
         width: 100%;
         margin: 0.35rem 0 0;
         padding-bottom: 0.15rem;
-    }
-
-    .rayfieldTopNav .rayfieldBrand {
-        display: none;
     }
 }
 
