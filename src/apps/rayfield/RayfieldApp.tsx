@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useApi } from 'hooks/useApi';
 import { isDemo, useRayfieldData } from './RayfieldDataAdapter';
+import { playRayfieldItem } from './RayfieldPlayback';
 import { activeStreams, continueWatching, movies, navItems, profiles, serverStats, shows, type MediaItem } from './mockData';
 import './rayfield.scss';
 
@@ -10,10 +11,12 @@ const Icon = ({ children }: { children: React.ReactNode }) => <span className='r
 
 function Logo() { return <div className='rf-logo' aria-label='Rayfield'><span className='rf-logo-mark'>R</span><span>rayfield</span></div>; }
 
-function MediaCard({ item, landscape = false }: { item: MediaItem; landscape?: boolean }) {
-    return <article className={`media-card ${landscape ? 'landscape' : ''}`} tabIndex={0}>
-        <div className='media-art'><img src={item.image} alt={`${item.title} artwork`} /><button className='card-play' aria-label={`Play ${item.title}`} onClick={(event) => event.stopPropagation()}><Icon>▶</Icon></button>{item.progress && <div className='progress-track'><span style={{ width: `${item.progress}%` }} /></div>}</div>
-        <div className='media-copy'><h3>{item.title}</h3><p>{item.episode || `${item.year} · ${item.meta}`} <span className='rating'>✦ {item.rating}</span></p></div>
+function MediaCard({ item, landscape = false, onPlay = (selectedItem) => playRayfieldItem(selectedItem, isDemo) }: { item: MediaItem; landscape?: boolean; onPlay?: (item: MediaItem) => void | Promise<unknown> }) {
+    const [error, setError] = useState(false);
+    const handlePlay = () => { Promise.resolve(onPlay(item)).catch(() => setError(true)); };
+    return <article className={`media-card ${landscape ? 'landscape' : ''}`} tabIndex={0} onClick={handlePlay} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); handlePlay(); } }}>
+        <div className='media-art'><img src={item.image} alt={`${item.title} artwork`} /><button className='card-play' aria-label={`Play ${item.title}`} onClick={(event) => { event.stopPropagation(); handlePlay(); }}><Icon>▶</Icon></button>{item.progress && <div className='progress-track'><span style={{ width: `${item.progress}%` }} /></div>}</div>
+        <div className='media-copy'><h3>{item.title}</h3><p>{item.episode || `${item.year} · ${item.meta}`} <span className='rating'>✦ {item.rating}</span></p>{error && <small className='error-text' role='alert'>Unable to start playback.</small>}</div>
     </article>;
 }
 

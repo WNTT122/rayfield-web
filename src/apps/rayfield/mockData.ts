@@ -10,6 +10,8 @@ export type MediaItem = {
     progress?: number;
     episode?: string;
     genres?: string[];
+    serverId?: string;
+    playbackPositionTicks?: number;
 };
 
 export const profiles = [

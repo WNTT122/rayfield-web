@@ -24,6 +24,8 @@ const toMediaItem = (item: any, type: MediaItem['type']): MediaItem => ({
         : (item.RecursiveItemCount ? `${item.RecursiveItemCount} episodes` : 'TV series'),
     rating: item.CommunityRating ? Number(item.CommunityRating).toFixed(1) : '—',
     progress: item.UserData?.PlayedPercentage,
+    serverId: item.ServerId,
+    playbackPositionTicks: item.UserData?.PlaybackPositionTicks,
     episode: type === 'series' && item.ParentIndexNumber != null && item.IndexNumber != null
         ? `S${String(item.ParentIndexNumber).padStart(2, '0')} E${String(item.IndexNumber).padStart(2, '0')}`
         : undefined,
