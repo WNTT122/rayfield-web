@@ -28,6 +28,10 @@ import { updateApiClientSdk } from 'utils/jellyfin-apiclient/compat';
 import { initializeServerConnections } from './scripts/serverNotifications';
 
 import RootApp from './RootApp';
+import RayfieldApp from './apps/rayfield/RayfieldApp';
+
+const isRayfieldDemo = process.env.VITE_RAYFIELD_DEMO === 'true'
+    && new URLSearchParams(window.location.search).get('rayfieldMock') === '1';
 
 // Import the button webcomponent for use throughout the site
 // NOTE: This is a bit of a hack, files should ensure the component is imported before use
@@ -49,6 +53,14 @@ import './styles/detailtable.scss';
 import './styles/librarybrowser.scss';
 
 async function init() {
+    if (isRayfieldDemo) {
+        document.title = 'Rayfield';
+        const container = document.getElementById('reactRoot');
+        container.innerHTML = '';
+        createRoot(container).render(<RayfieldApp />);
+        return;
+    }
+
     // Log current version to console to help out with issue triage and debugging
     console.info(
         `[${__PACKAGE_JSON_NAME__}]
